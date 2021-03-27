@@ -6,5 +6,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
- 
+    public int jumpIntensity = 6;
+
+
+
 }
