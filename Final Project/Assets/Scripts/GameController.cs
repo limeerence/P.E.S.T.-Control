@@ -6,9 +6,5 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    
-    private void Update()
-    {
-        
-    }
+ 
 }
