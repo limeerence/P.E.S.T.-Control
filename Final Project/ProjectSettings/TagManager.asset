@@ -8,6 +8,7 @@ TagManager:
   - hazard
   - bullet
   - Enemy
+  - movingPlatform
   layers:
   - Default
   - TransparentFX

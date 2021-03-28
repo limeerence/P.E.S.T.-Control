@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pillbug: {fileID: 544358271578710839, guid: e28161a75b59bde45afda34859df7a0b, type: 3}
-  speed: 130
+  bulletSpeed: 100
 --- !u!1 &715401399
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,7 +247,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3840506883770083736, guid: 624cfa88573098143ab9d46a04ac6b2b, type: 3}
       propertyPath: m_Name
-      value: hero_v0.1
+      value: pnf839_prefab
       objectReference: {fileID: 0}
     - target: {fileID: 4469796264136848162, guid: 624cfa88573098143ab9d46a04ac6b2b, type: 3}
       propertyPath: m_RootOrder

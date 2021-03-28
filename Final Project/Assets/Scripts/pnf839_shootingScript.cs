@@ -5,23 +5,38 @@ using UnityEngine;
 public class pnf839_shootingScript : MonoBehaviour
 {
     public Rigidbody pillbug;
-    public float speed = 30;
-
-    // Update is called once per frame
+    public float bulletSpeed = 100;
+    bool allowShoot = true;
+    private Rigidbody bullet;
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (allowShoot)
         {
-            Rigidbody bullet = Instantiate(pillbug, transform.position, transform.rotation) as Rigidbody;
-            bullet.velocity = transform.TransformDirection(Vector3.forward *50);
-            
+            if (Input.GetMouseButton(0))
+            {
+                Debug.Log("MouseDown");
+                StartCoroutine("wait");
+                Destroy(bullet.gameObject, 2);
+
+            }
         }
-        //idk how to make it delay
-        //Invoke("Delay", 0.05f);
     }
 
-  /*  private void Delay() {
-        Destroy(gameObject);
-    }*/
+    IEnumerator wait()
+    {
+        allowShoot = false;
+        bullet = Instantiate(pillbug, transform.position, transform.rotation) as Rigidbody;
+        bullet.velocity = transform.TransformDirection(new Vector3(0, 0, bulletSpeed));
+        yield return new WaitForSeconds(0.5f);
+        allowShoot = true;
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Platform")
+        {
+            Destroy(gameObject);
+            Debug.Log("Wall hit");
+        }
+    }
 }
