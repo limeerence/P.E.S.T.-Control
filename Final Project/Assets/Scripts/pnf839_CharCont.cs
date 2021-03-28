@@ -11,14 +11,6 @@ public class pnf839_CharCont : MonoBehaviour
     private Transform cam;
     private Vector3 moveDirection;
 
-    [Range(-45, -15)]
-    public int minAngle = -30;
-    [Range(30, 80)]
-    public int maxAngle = 45;
-    [Range(50, 500)]
-    public int sensitivity = 200;
-
-
     // Start is called before the first frame update
 
     // Update is called once per frame
