@@ -9,7 +9,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     public class pnf839_CharCont : MonoBehaviour
     {
         AudioSource audio;
-        [SerializeField] private GameController gameController;
+        [SerializeField] private oos266_GameController gameController;
 
         [Serializable]
         public class MovementSettings
@@ -129,6 +129,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Capsule = GetComponent<CapsuleCollider>();
             mouseLook.Init(transform, cam.transform);
             audio = GetComponent<AudioSource>();
+
+            if (!gameController)
+            {
+                gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<oos266_GameController>();
+            }
         }
 
         private void Update() {
@@ -270,9 +275,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.tag == "hazard")
+            if (collision.gameObject.tag == "hazard" || collision.gameObject.tag == "Enemy")
             {
-                gameController.health -= 10;
+                gameController.updateHealth(-1);
             }
         }
 

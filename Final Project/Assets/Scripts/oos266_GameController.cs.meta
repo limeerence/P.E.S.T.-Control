@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: aabc43d6399a6774aa1564d83596aa66
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - healthBar: {instanceID: 0}
+  - health0: {instanceID: 0}
+  - health1: {instanceID: 0}
+  - health2: {instanceID: 0}
+  - health3: {instanceID: 0}
+  - health4: {instanceID: 0}
+  - health5: {instanceID: 0}
+  - gameOverImage: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
