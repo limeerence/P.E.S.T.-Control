@@ -26,10 +26,10 @@ public class oos266_GameController : MonoBehaviour
 
     private void Update()
     {
-        if (health <= 0) {
+       /* if (health <= 0) {
             //GameOver();
             Debug.Log("Taking damage");
-        }
+        }*/
     }
 
     public void updateHealth(int addHealth)

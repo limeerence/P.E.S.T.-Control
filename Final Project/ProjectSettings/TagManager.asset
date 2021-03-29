@@ -9,6 +9,7 @@ TagManager:
   - bullet
   - Enemy
   - movingPlatform
+  - powerHealth
   layers:
   - Default
   - TransparentFX

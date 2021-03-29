@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6818224632191639012}
   m_Layer: 0
   m_Name: PowerUp Star
-  m_TagString: Untagged
+  m_TagString: powerHealth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

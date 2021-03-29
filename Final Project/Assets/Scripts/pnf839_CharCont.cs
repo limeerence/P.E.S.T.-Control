@@ -8,7 +8,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof(CapsuleCollider))]
     public class pnf839_CharCont : MonoBehaviour
     {
-        AudioSource audio;
+        //AudioSource audio;
         [SerializeField] private oos266_GameController gameController;
 
         [Serializable]
@@ -128,7 +128,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
             mouseLook.Init(transform, cam.transform);
-            audio = GetComponent<AudioSource>();
+            //audio = GetComponent<AudioSource>();
 
             if (!gameController)
             {
@@ -138,11 +138,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void Update() {
             RotateView();
-            audio.Play();
+            //audio.Play();
             if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
             {
                 m_Jump = true;
-                audio.Stop();
+                //audio.Stop();
             }
             
         }
@@ -269,7 +269,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (!m_PreviouslyGrounded && m_IsGrounded && m_Jumping)
             {
                 m_Jumping = false;
-                audio.Play();
+                //audio.Play();
             }
         }
 
@@ -279,6 +279,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 gameController.updateHealth(-1);
             }
+            /*if (collision.gameObject.tag == "powerHealth") {
+                gameController.updateHealth(+1);
+            }*/
         }
 
         private void OnCollisionStay(Collision collision)
