@@ -10,6 +10,9 @@ TagManager:
   - Enemy
   - movingPlatform
   - powerHealth
+  - powerShield
+  - powerSnowflake
+  - powerStar
   layers:
   - Default
   - TransparentFX
