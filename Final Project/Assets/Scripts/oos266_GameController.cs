@@ -9,6 +9,8 @@ public class oos266_GameController : MonoBehaviour
     public int jumpIntensity = 6;
     public int health = 5;
 
+    private int mainmenuIndex = 0;
+
     [SerializeField] public Image healthBar;
     [SerializeField] public Sprite health0;
     [SerializeField] public Sprite health1;
@@ -17,7 +19,7 @@ public class oos266_GameController : MonoBehaviour
     [SerializeField] public Sprite health4;
     [SerializeField] public Sprite health5;
 
-    [SerializeField] private Image gameOverImage;
+    [SerializeField] public GameObject gameOverPanel;
 
     private void Start()
     {
@@ -63,7 +65,7 @@ public class oos266_GameController : MonoBehaviour
     public void GameOver()
     {
         healthBar.sprite = health0;
-        gameOverImage.gameObject.SetActive(true);
+        gameOverPanel.gameObject.SetActive(true);
         //GameObject.FindGameObjectWithTag("Player").GetComponent<characterController>().enabled = false;
         GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         Debug.Log("GAME OVER!!");
@@ -74,7 +76,7 @@ public class oos266_GameController : MonoBehaviour
     {
         //PlayerPrefs.DeleteKey("PlayerHealth");
         //PlayerPrefs.DeleteKey("PlayerLevel");
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(mainmenuIndex);
     }
 
 }

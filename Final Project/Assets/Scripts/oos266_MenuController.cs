@@ -5,6 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class oos266_MenuController : MonoBehaviour
 {
+    [SerializeField] public GameObject gamePanel;
+    [SerializeField] public GameObject pausePanel;
+
+    private int mainmenuIndex = 0;
+    private int level1Index = 1;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != mainmenuIndex)
+        {
+            gamePanel.SetActive(false);
+            pausePanel.SetActive(true);
+            PauseGame();
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex == mainmenuIndex)
+        {
+            Cursor.visible = true;
+        }
+
+    }
+
     public void QuitGame()
     {
 #if UNITY_EDITOR
@@ -16,11 +38,13 @@ public class oos266_MenuController : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(level1Index);
     }
 
     public void PauseGame()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Time.timeScale = 0;
     }
 
@@ -32,6 +56,6 @@ public class oos266_MenuController : MonoBehaviour
     public void ReturnToMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(mainmenuIndex);
     }
 }
