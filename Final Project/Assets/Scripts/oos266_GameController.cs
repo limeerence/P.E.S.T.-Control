@@ -9,8 +9,6 @@ public class oos266_GameController : MonoBehaviour
     public int jumpIntensity = 6;
     public int health = 5;
 
-    private int mainmenuIndex = 0;
-
     [SerializeField] public Image healthBar;
     [SerializeField] public Sprite health0;
     [SerializeField] public Sprite health1;
@@ -66,17 +64,11 @@ public class oos266_GameController : MonoBehaviour
     {
         healthBar.sprite = health0;
         gameOverPanel.gameObject.SetActive(true);
-        //GameObject.FindGameObjectWithTag("Player").GetComponent<characterController>().enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets.Characters.FirstPerson.pnf839_CharCont>().enabled = false;
         GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         Debug.Log("GAME OVER!!");
-        Invoke("returnToMenu", 3);
-    }
-
-    private void returnToMenu()
-    {
-        //PlayerPrefs.DeleteKey("PlayerHealth");
-        //PlayerPrefs.DeleteKey("PlayerLevel");
-        SceneManager.LoadScene(mainmenuIndex);
     }
 
 }

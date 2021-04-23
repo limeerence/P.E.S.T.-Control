@@ -8,8 +8,17 @@ public class oos266_MenuController : MonoBehaviour
     [SerializeField] public GameObject gamePanel;
     [SerializeField] public GameObject pausePanel;
 
-    private int mainmenuIndex = 0;
-    private int level1Index = 1;
+    private int mainmenuIndex = 1;
+    private int level1Index = 2;
+
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == mainmenuIndex)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
 
     private void Update()
     {
@@ -18,11 +27,6 @@ public class oos266_MenuController : MonoBehaviour
             gamePanel.SetActive(false);
             pausePanel.SetActive(true);
             PauseGame();
-        }
-
-        if (SceneManager.GetActiveScene().buildIndex == mainmenuIndex)
-        {
-            Cursor.visible = true;
         }
 
     }
@@ -57,5 +61,10 @@ public class oos266_MenuController : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(mainmenuIndex);
+    }
+
+    public void RetryLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
