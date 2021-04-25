@@ -8,6 +8,7 @@ public class oos266_IntroScene : MonoBehaviour
 {
     private int mainmenuIndex = 1;
     private int waitForImage = 10;
+    private int waitForSkip = 5;
 
     [SerializeField] private Image sceneImage;
     [SerializeField] private Sprite scene1;
@@ -16,15 +17,28 @@ public class oos266_IntroScene : MonoBehaviour
     [SerializeField] private Sprite scene4;
     [SerializeField] private Sprite scene5;
 
+    [SerializeField] private Button skip;
+
     void Start()
     {
         StartCoroutine("IntroScene");
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ReturnToMenu();
+        }
+
+    }
+
     IEnumerator IntroScene()
     {
         sceneImage.sprite = scene1;
-        yield return new WaitForSeconds(waitForImage);
+        yield return new WaitForSeconds(waitForSkip);
+        skip.gameObject.SetActive(true);
+        yield return new WaitForSeconds(waitForSkip);
 
         sceneImage.sprite = scene2;
         yield return new WaitForSeconds(waitForImage);
@@ -38,6 +52,11 @@ public class oos266_IntroScene : MonoBehaviour
         sceneImage.sprite = scene5;
         yield return new WaitForSeconds(waitForImage);
 
+        SceneManager.LoadScene(mainmenuIndex);
+    }
+
+    public void ReturnToMenu()
+    {
         SceneManager.LoadScene(mainmenuIndex);
     }
 
