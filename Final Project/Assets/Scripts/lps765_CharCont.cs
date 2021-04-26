@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -99,6 +100,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float rotX;
         private float rotY;
         public float RotSpeed = 2f;
+        private bool isInvulnerable = false;
+        [SerializeField] float timeInvulnerable = 2.0f;
 
         public Vector3 Velocity
         {
@@ -132,7 +135,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
-            mouseLook.Init(transform, cam.transform);
+            //mouseLook.Init(transform, cam.transform);
             CameraRot = cam.transform.localRotation;
             //audio = GetComponent<AudioSource>();
 
@@ -247,7 +250,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             rotX += CrossPlatformInputManager.GetAxis("Mouse X") * RotSpeed;
             rotY += CrossPlatformInputManager.GetAxis("Mouse Y") * RotSpeed;
             rotY = Mathf.Clamp(rotY, -65f, 65f);
-            Debug.Log(CameraRot);
             cam.transform.localRotation = Quaternion.Euler(-rotY, -90f, 0f);
             transform.localRotation = Quaternion.Euler(0f, rotX, 0f);
 
@@ -289,13 +291,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.tag == "hazard" || collision.gameObject.tag == "Enemy")
+            if (collision.collider.GetType() == typeof(BoxCollider))
             {
-                gameController.updateHealth(-1);
+                if (collision.gameObject.tag == "Enemy")
+                {
+                    gameController.updateHealth(-1);
+                }
+                /*if (collision.gameObject.tag == "powerHealth") {
+                    gameController.updateHealth(+1);
+                }*/
             }
-            /*if (collision.gameObject.tag == "powerHealth") {
-                gameController.updateHealth(+1);
-            }*/
         }
 
         private void OnCollisionStay(Collision collision)
@@ -303,6 +308,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (collision.gameObject.tag == "movingPlatform")
             {
                 gameObject.transform.parent = collision.transform;
+            }
+
+            if (collision.collider.GetType() == typeof(BoxCollider))
+            {
+                if (collision.gameObject.tag == "hazard" && isInvulnerable == false)
+                {
+                    gameController.updateHealth(-1);
+                    StartCoroutine("InvulnerableTime");
+                }
             }
         }
 
@@ -312,6 +326,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 gameObject.transform.parent = null;
             }
+        }
+
+        IEnumerator InvulnerableTime()
+        {
+            isInvulnerable = true;
+            yield return new WaitForSeconds(timeInvulnerable);
+            isInvulnerable = false;
         }
 
     }
