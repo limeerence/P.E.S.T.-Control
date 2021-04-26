@@ -37,7 +37,7 @@ public class oos266_GameController : MonoBehaviour
     public void updateHealth(int addHealth)
     {
         health += addHealth;
-
+        Debug.Log("Update health: " + health);
         if (health <= 0)
         {
             GameOver();
