@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6199944052341453799}
   - component: {fileID: 8209594887193708333}
   - component: {fileID: 9119375909936233244}
+  - component: {fileID: -7213408853083994933}
   m_Layer: 0
   m_Name: PowerUp Shield
   m_TagString: powerShield
@@ -96,3 +97,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2414686108842879234, guid: 4c127c3fac5727349b965af9dd44b0a4, type: 3}
+--- !u!114 &-7213408853083994933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7705284568246707960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90443ed2bed3dfb4e8873fb55a707bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}

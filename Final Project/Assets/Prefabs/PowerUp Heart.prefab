@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5836416721436840276}
   - component: {fileID: 8582710096372721054}
   - component: {fileID: 2635925889527014129}
+  - component: {fileID: 3065670289800971792}
   m_Layer: 0
   m_Name: PowerUp Heart
   m_TagString: powerHealth
@@ -96,3 +97,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8918039895251835092, guid: 5e62750580b3bee4d86f767451ced6c0, type: 3}
+--- !u!114 &3065670289800971792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7789843260244739147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90443ed2bed3dfb4e8873fb55a707bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}

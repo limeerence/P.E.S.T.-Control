@@ -275,7 +275,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.tag == "hazard" || collision.gameObject.tag == "Enemy")
+            if ((collision.gameObject.tag == "hazard" || collision.gameObject.tag == "Enemy") && !gameController.shieldPowerUp)
             {
                 gameController.updateHealth(-1);
             }
@@ -298,6 +298,38 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 gameObject.transform.parent = null;
             }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            //gives player an extra life
+            if (other.gameObject.tag == "powerHealth")
+            {
+                Debug.Log("1-UP");
+                gameController.updateHealth(1);
+                Destroy(other.gameObject);
+
+                StartCoroutine(gameController.healthPopup());
+            }
+
+            //slow enemies
+            if (other.gameObject.tag == "powerSnowflake")
+            {
+                Debug.Log("Slow");
+                Destroy(other.gameObject);
+
+                StartCoroutine(gameController.slowed());
+            }
+
+            //shield
+            if (other.gameObject.tag == "powerShield")
+            {
+                Debug.Log("Shield");
+                Destroy(other.gameObject);
+
+                StartCoroutine(gameController.shielded());
+            }
+
         }
 
     }

@@ -10,12 +10,14 @@ public class oos266_GameController : MonoBehaviour
     public int health = 5;
 
     [SerializeField] public Image healthBar;
-    [SerializeField] public Sprite health0;
-    [SerializeField] public Sprite health1;
-    [SerializeField] public Sprite health2;
-    [SerializeField] public Sprite health3;
-    [SerializeField] public Sprite health4;
-    [SerializeField] public Sprite health5;
+    [SerializeField] public Sprite[] healthSprites;
+
+    [SerializeField] private Image healthImage;
+    [SerializeField] private Image shieldedImage;
+    [SerializeField] private Image slowedImage;
+
+    public bool shieldPowerUp = false;
+    public bool snowflakePowerUp = false;
 
     [SerializeField] public GameObject gameOverPanel;
 
@@ -35,34 +37,18 @@ public class oos266_GameController : MonoBehaviour
     public void updateHealth(int addHealth)
     {
         health += addHealth;
-        switch (health)
+
+        if (health <= 0)
         {
-            case 0:
-                GameOver();
-                break;
-            case 1:
-                healthBar.sprite = health1;
-                break;
-            case 2:
-                healthBar.sprite = health2;
-                break;
-            case 3:
-                healthBar.sprite = health3;
-                break;
-            case 4:
-                healthBar.sprite = health4;
-                break;
-            case 5:
-                healthBar.sprite = health5;
-                break;
-            default:
-                break;
+            GameOver();
         }
+        healthBar.sprite = healthSprites[health];
+
     }
 
     public void GameOver()
     {
-        healthBar.sprite = health0;
+        healthBar.sprite = healthSprites[0];
         gameOverPanel.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -71,4 +57,28 @@ public class oos266_GameController : MonoBehaviour
         Debug.Log("GAME OVER!!");
     }
 
+    public IEnumerator healthPopup()
+    {
+        healthImage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2);
+        healthImage.gameObject.SetActive(false);
+    }
+
+    public IEnumerator shielded()
+    {
+        shieldPowerUp = true;
+        shieldedImage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(10);
+        shieldPowerUp = false;
+        shieldedImage.gameObject.SetActive(false);
+    }
+
+    public IEnumerator slowed()
+    {
+        snowflakePowerUp = true;
+        slowedImage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(10);
+        snowflakePowerUp = false;
+        slowedImage.gameObject.SetActive(false);
+    }
 }

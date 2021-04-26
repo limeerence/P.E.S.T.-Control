@@ -11,7 +11,7 @@ public class oos266_MenuController : MonoBehaviour
     private int mainmenuIndex = 1;
     private int level1Index = 2;
 
-    private void Start()
+    private void Awake()
     {
         if (SceneManager.GetActiveScene().buildIndex == mainmenuIndex)
         {
