@@ -293,7 +293,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             if (collision.collider.GetType() == typeof(BoxCollider))
             {
-                if (collision.gameObject.tag == "Enemy")
+                if (collision.gameObject.tag == "Enemy" && !gameController.shieldPowerUp)
                 {
                     gameController.updateHealth(-1);
                 }
@@ -312,7 +312,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (collision.collider.GetType() == typeof(BoxCollider))
             {
-                if (collision.gameObject.tag == "hazard" && isInvulnerable == false)
+                if (collision.gameObject.tag == "hazard" && isInvulnerable == false && !gameController.shieldPowerUp)
                 {
                     gameController.updateHealth(-1);
                     StartCoroutine("InvulnerableTime");
@@ -333,6 +333,38 @@ namespace UnityStandardAssets.Characters.FirstPerson
             isInvulnerable = true;
             yield return new WaitForSeconds(timeInvulnerable);
             isInvulnerable = false;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            //gives player an extra life
+            if (other.gameObject.tag == "powerHealth")
+            {
+                Debug.Log("1-UP");
+                gameController.updateHealth(1);
+                Destroy(other.gameObject);
+
+                StartCoroutine(gameController.healthPopup());
+            }
+
+            //slow enemies
+            if (other.gameObject.tag == "powerSnowflake")
+            {
+                Debug.Log("Slow");
+                Destroy(other.gameObject);
+
+                StartCoroutine(gameController.slowed());
+            }
+
+            //shield
+            if (other.gameObject.tag == "powerShield")
+            {
+                Debug.Log("Shield");
+                Destroy(other.gameObject);
+
+                StartCoroutine(gameController.shielded());
+            }
+
         }
 
     }
