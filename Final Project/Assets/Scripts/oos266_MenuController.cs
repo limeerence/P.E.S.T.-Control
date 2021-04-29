@@ -65,6 +65,7 @@ public class oos266_MenuController : MonoBehaviour
 
     public void RetryLevel()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
