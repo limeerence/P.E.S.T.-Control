@@ -144,7 +144,27 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_Jump = true;
                 //audio.Stop();
             }
-            
+
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            pnf839_shootingScript ss;
+            ss = player.transform.Find("pest_machine").transform.Find("spawnpoint").GetComponent<pnf839_shootingScript>();
+
+            if (Input.GetKeyDown("1"))
+            {
+                if (ss.allowSwitch = true)
+                {
+                    gameController.updateWeapon(1);
+                }
+            }
+
+            if (Input.GetKeyDown("2"))
+            {
+                if (ss.allowSwitch = true)
+                {
+                    gameController.updateWeapon(2);
+                }
+            }
+
         }
         private void FixedUpdate()
         {

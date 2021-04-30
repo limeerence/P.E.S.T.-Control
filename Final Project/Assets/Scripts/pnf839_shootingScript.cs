@@ -6,30 +6,37 @@ public class pnf839_shootingScript : MonoBehaviour
 {
     public Rigidbody pillbug;
     public float bulletSpeed = 100;
-    bool allowShoot = true;
+    public float bulletDelay;
+    public bool allowShoot = true;
+    public bool allowSwitch = false;
     private Rigidbody bullet;
     void Update()
     {
-        if (allowShoot)
+        if (Input.GetMouseButton(0))
         {
-            if (Input.GetMouseButton(0))
+            if (allowShoot)
             {
-                Debug.Log("MouseDown");
-                StartCoroutine("wait");
-                Destroy(bullet.gameObject, 2);
-
+                StartCoroutine(shoot());
             }
         }
     }
 
-    IEnumerator wait()
+    public IEnumerator shoot()
     {
+        shootspawning();
         allowShoot = false;
-        bullet = Instantiate(pillbug, transform.position, transform.rotation) as Rigidbody;
-        bullet.velocity = transform.TransformDirection(new Vector3(0, 0, bulletSpeed));
-        yield return new WaitForSeconds(0.5f);
+        allowSwitch = false;
+        yield return new WaitForSeconds(bulletDelay);
         allowShoot = true;
     }
+    -
+    void shootspawning()
+    {
+        bullet = Instantiate(pillbug, transform.position, transform.rotation) as Rigidbody;
+        bullet.velocity = transform.TransformDirection(new Vector3(0, 0, bulletSpeed));
+        allowSwitch = true;
+    }
+
 
     private void OnCollisionEnter(Collision collision)
     {

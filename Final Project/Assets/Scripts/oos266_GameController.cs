@@ -81,4 +81,28 @@ public class oos266_GameController : MonoBehaviour
         snowflakePowerUp = false;
         slowedImage.gameObject.SetActive(false);
     }
+
+    public void updateWeapon(int keypressed)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject pestMachine = player.transform.Find("pest_machine").gameObject;
+        GameObject fireMachine = player.transform.Find("fire").gameObject;
+        pnf839_shootingScript ss;
+        ss = player.transform.Find("pest_machine").transform.Find("spawnpoint").GetComponent<pnf839_shootingScript>();
+        switch (keypressed)
+        {
+            case 1:
+                pestMachine.gameObject.active = true;
+                fireMachine.gameObject.active = false;
+                ss.bulletDelay = 0.5f;
+                break;
+            case 2:
+                fireMachine.gameObject.active = true;
+                pestMachine.gameObject.active = false;
+                ss.bulletDelay = 0.2f;
+                break;
+
+        }
+
+    }
 }
