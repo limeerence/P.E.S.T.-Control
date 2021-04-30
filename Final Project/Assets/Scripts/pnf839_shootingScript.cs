@@ -29,7 +29,7 @@ public class pnf839_shootingScript : MonoBehaviour
         yield return new WaitForSeconds(bulletDelay);
         allowShoot = true;
     }
-    -
+    
     void shootspawning()
     {
         bullet = Instantiate(pillbug, transform.position, transform.rotation) as Rigidbody;
