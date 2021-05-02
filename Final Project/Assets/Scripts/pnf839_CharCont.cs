@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -35,7 +36,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     //strafe
                     CurrentTargetSpeed = StrafeSpeed;
-                    
+
                 }
                 if (input.y < 0)
                 {
@@ -95,6 +96,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_YRotation;
         private Vector3 m_GroundContactNormal;
         private bool m_Jump, m_PreviouslyGrounded, m_Jumping, m_IsGrounded;
+        public float timeInvulnerable = 2f;
+        private bool isInvulnerable;
+
 
 
         public Vector3 Velocity
@@ -138,7 +142,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
-        private void Update() {
+        private void Update()
+        {
             RotateView();
             //audio.Play();
             if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
@@ -172,7 +177,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             GroundCheck();
             Vector2 input = GetInput();
-            
+
 
             if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || m_IsGrounded))
             {
@@ -280,7 +285,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         /// sphere cast down just beyond the bottom of the capsule to see if the capsule is colliding round the bottom
         private void GroundCheck()
         {
-            
+
             m_PreviouslyGrounded = m_IsGrounded;
             RaycastHit hitInfo;
             if (Physics.SphereCast(transform.position, m_Capsule.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo,
@@ -288,7 +293,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_IsGrounded = true;
                 m_GroundContactNormal = hitInfo.normal;
-                
+
             }
             else
             {
@@ -304,13 +309,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void OnCollisionEnter(Collision collision)
         {
-            if ((collision.gameObject.tag == "hazard" || collision.gameObject.tag == "Enemy") && !gameController.shieldPowerUp)
+            if (collision.collider.GetType() == typeof(BoxCollider))
             {
-                gameController.updateHealth(-1);
+                if (collision.gameObject.tag == "Enemy" && !gameController.shieldPowerUp)
+                {
+                    gameController.updateHealth(-1);
+                }
+                /*if (collision.gameObject.tag == "powerHealth") {
+                    gameController.updateHealth(+1);
+                }*/
             }
-            /*if (collision.gameObject.tag == "powerHealth") {
-                gameController.updateHealth(+1);
-            }*/
         }
 
         private void OnCollisionStay(Collision collision)
@@ -319,7 +327,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 gameObject.transform.parent = collision.transform;
             }
+
+            if (collision.collider.GetType() == typeof(BoxCollider))
+            {
+                if (collision.gameObject.tag == "hazard" && isInvulnerable == false && !gameController.shieldPowerUp)
+                {
+                    StartCoroutine("InvulnerableTime");
+                    gameController.updateHealth(-1);
+                }
+            }
         }
+
 
         private void OnCollisionExit(Collision collision)
         {
@@ -361,5 +379,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         }
 
+        IEnumerator InvulnerableTime()
+        {
+            isInvulnerable = true;
+            yield return new WaitForSeconds(timeInvulnerable);
+            isInvulnerable = false;
+        }
     }
 }
