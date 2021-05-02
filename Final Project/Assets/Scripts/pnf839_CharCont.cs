@@ -87,7 +87,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public MouseLook mouseLook = new MouseLook();
         public AdvancedSettings advancedSettings = new AdvancedSettings();
 
-
+        private float rotX;
+        private float rotY;
+        public float RotSpeed = 2f;
         private Rigidbody m_RigidBody;
         private CapsuleCollider m_Capsule;
         private float m_YRotation;
@@ -258,7 +260,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // get the rotation before it's changed
             float oldYRotation = transform.eulerAngles.y;
 
-            mouseLook.LookRotation(transform, cam.transform);
+            //mouseLook.LookRotation(transform, cam.transform);
+
+            rotX += CrossPlatformInputManager.GetAxis("Mouse X") * RotSpeed;
+            rotY += CrossPlatformInputManager.GetAxis("Mouse Y") * RotSpeed;
+            rotY = Mathf.Clamp(rotY, -65f, 65f);
+            cam.transform.localRotation = Quaternion.Euler(-rotY, -90f, 0f);
+            transform.localRotation = Quaternion.Euler(0f, rotX, 0f);
+            mouseLook.UpdateCursorLock();
 
             if (m_IsGrounded || advancedSettings.airControl)
             {
