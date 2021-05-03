@@ -135,11 +135,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Capsule = GetComponent<CapsuleCollider>();
             mouseLook.Init(transform, cam.transform);
             //audio = GetComponent<AudioSource>();
-
+            /*
             if (!gameController)
             {
                 gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<oos266_GameController>();
-            }
+            }*/
         }
 
         private void Update()
@@ -156,22 +156,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             pnf839_shootingScript ss;
             ss = player.transform.Find("pest_machine").transform.Find("spawnpoint").GetComponent<pnf839_shootingScript>();
 
+            /*
             if (Input.GetKeyDown("1"))
             {
-                if (ss.allowSwitch = true)
-                {
                     gameController.updateWeapon(1);
-                }
             }
 
             if (Input.GetKeyDown("2"))
             {
-                if (ss.allowSwitch = true)
-                {
                     gameController.updateWeapon(2);
-                }
             }
-
+            */
         }
         private void FixedUpdate()
         {
