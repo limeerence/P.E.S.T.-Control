@@ -51,6 +51,13 @@ public class vcd682_EnemyContoller : MonoBehaviour
 
         if (isAggroed)
         {
+            //lps765 - if statement to get snowflake power up to work
+            GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+            if (gameController.GetComponent<oos266_GameController>().snowflakePowerUp)
+                agent.speed = aggroSpeed / 2;
+            else
+                agent.speed = aggroSpeed;
+
             //If the enemy is entering it's attack animation, pause the nav
             if (isAttacking)
                 agent.enabled = false;
