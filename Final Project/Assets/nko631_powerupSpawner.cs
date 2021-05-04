@@ -8,12 +8,12 @@ public class nko631_powerupSpawner : MonoBehaviour
     public Transform[] powerupSpawners;
 
     private void Start()
-    {    
-
-        for (int i = 0; i <= 3; i++)
+    {
+        int pupSpawnersLen = powerupSpawners.Length -1;
+        for (int i = 0; i <= pupSpawnersLen; i++)
         {
             int randomP = Random.Range(0, 5);                                //random number 0-4
-            Debug.Log(randomP);
+            //Debug.Log(randomP);
             if (randomP == 4)                                                 //if it does 4 then nothing will spawn (20% chance)
             { }
             else

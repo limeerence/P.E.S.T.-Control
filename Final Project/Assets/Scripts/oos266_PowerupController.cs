@@ -22,11 +22,12 @@ public class oos266_PowerupController : MonoBehaviour
         transform.Rotate(0, 70 * Time.deltaTime, 0);
 
         //disable hearts if full health
-        if (gameObject.tag == "powerHealth" && controller.health >= 5)
+
+        /*if (gameObject.tag == "powerHealth" && controller.health >= 5)
         {
             gameObject.GetComponent<MeshCollider>().enabled = false;
             gameObject.GetComponent<MeshRenderer>().enabled = false;
-        }
+        }*/
 
     }
 
