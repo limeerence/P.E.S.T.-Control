@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -35,7 +36,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     //strafe
                     CurrentTargetSpeed = StrafeSpeed;
-                    
+
                 }
                 if (input.y < 0)
                 {
@@ -87,12 +88,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public MouseLook mouseLook = new MouseLook();
         public AdvancedSettings advancedSettings = new AdvancedSettings();
 
-
+        private float rotX;
+        private float rotY;
+        public float RotSpeed = 2f;
         private Rigidbody m_RigidBody;
         private CapsuleCollider m_Capsule;
         private float m_YRotation;
         private Vector3 m_GroundContactNormal;
         private bool m_Jump, m_PreviouslyGrounded, m_Jumping, m_IsGrounded;
+        public float timeInvulnerable = 2f;
+        private bool isInvulnerable;
+
 
 
         public Vector3 Velocity
@@ -129,14 +135,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Capsule = GetComponent<CapsuleCollider>();
             mouseLook.Init(transform, cam.transform);
             //audio = GetComponent<AudioSource>();
-
+            /*
             if (!gameController)
             {
                 gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<oos266_GameController>();
-            }
+            }*/
         }
 
-        private void Update() {
+        private void Update()
+        {
             RotateView();
             //audio.Play();
             if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
@@ -149,28 +156,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
             pnf839_shootingScript ss;
             ss = player.transform.Find("pest_machine").transform.Find("spawnpoint").GetComponent<pnf839_shootingScript>();
 
+            /*
             if (Input.GetKeyDown("1"))
             {
-                if (ss.allowSwitch = true)
-                {
                     gameController.updateWeapon(1);
-                }
             }
 
             if (Input.GetKeyDown("2"))
             {
-                if (ss.allowSwitch = true)
-                {
                     gameController.updateWeapon(2);
-                }
             }
-
+            */
         }
         private void FixedUpdate()
         {
             GroundCheck();
             Vector2 input = GetInput();
-            
+
 
             if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || m_IsGrounded))
             {
@@ -258,7 +260,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // get the rotation before it's changed
             float oldYRotation = transform.eulerAngles.y;
 
-            mouseLook.LookRotation(transform, cam.transform);
+            //mouseLook.LookRotation(transform, cam.transform);
+
+            rotX += CrossPlatformInputManager.GetAxis("Mouse X") * RotSpeed;
+            rotY += CrossPlatformInputManager.GetAxis("Mouse Y") * RotSpeed;
+            rotY = Mathf.Clamp(rotY, -65f, 65f);
+            cam.transform.localRotation = Quaternion.Euler(-rotY, -90f, 0f);
+            transform.localRotation = Quaternion.Euler(0f, rotX, 0f);
+            mouseLook.UpdateCursorLock();
 
             if (m_IsGrounded || advancedSettings.airControl)
             {
@@ -271,7 +280,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         /// sphere cast down just beyond the bottom of the capsule to see if the capsule is colliding round the bottom
         private void GroundCheck()
         {
-            
+
             m_PreviouslyGrounded = m_IsGrounded;
             RaycastHit hitInfo;
             if (Physics.SphereCast(transform.position, m_Capsule.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo,
@@ -279,7 +288,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_IsGrounded = true;
                 m_GroundContactNormal = hitInfo.normal;
-                
+
             }
             else
             {
@@ -295,13 +304,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void OnCollisionEnter(Collision collision)
         {
-            if ((collision.gameObject.tag == "hazard" || collision.gameObject.tag == "Enemy") && !gameController.shieldPowerUp)
+            if (collision.collider.GetType() == typeof(BoxCollider))
             {
-                gameController.updateHealth(-1);
+                if (collision.gameObject.tag == "Enemy" && !gameController.shieldPowerUp)
+                {
+                    gameController.updateHealth(-1);
+                }
+                /*if (collision.gameObject.tag == "powerHealth") {
+                    gameController.updateHealth(+1);
+                }*/
             }
-            /*if (collision.gameObject.tag == "powerHealth") {
-                gameController.updateHealth(+1);
-            }*/
         }
 
         private void OnCollisionStay(Collision collision)
@@ -310,7 +322,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 gameObject.transform.parent = collision.transform;
             }
+
+            if (collision.collider.GetType() == typeof(BoxCollider))
+            {
+                if (collision.gameObject.tag == "hazard" && isInvulnerable == false && !gameController.shieldPowerUp)
+                {
+                    StartCoroutine("InvulnerableTime");
+                    gameController.updateHealth(-1);
+                }
+            }
         }
+
 
         private void OnCollisionExit(Collision collision)
         {
@@ -325,11 +347,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //gives player an extra life
             if (other.gameObject.tag == "powerHealth")
             {
-                Debug.Log("1-UP");
-                gameController.updateHealth(1);
+                Debug.Log("Full Health");
                 Destroy(other.gameObject);
 
-                StartCoroutine(gameController.healthPopup());
+                if (gameController.health < 5)
+                {
+                    Debug.Log("1-UP");
+                    gameController.updateHealth(1);
+                    StartCoroutine(gameController.healthPopup());
+                }
+                else { }
+
             }
 
             //slow enemies
@@ -352,5 +380,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         }
 
+        IEnumerator InvulnerableTime()
+        {
+            isInvulnerable = true;
+            yield return new WaitForSeconds(timeInvulnerable);
+            isInvulnerable = false;
+        }
     }
 }

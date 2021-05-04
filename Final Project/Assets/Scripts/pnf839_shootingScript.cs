@@ -7,9 +7,9 @@ public class pnf839_shootingScript : MonoBehaviour
     public Rigidbody pillbug;
     public float bulletSpeed = 100;
     public float bulletDelay;
-    public bool allowShoot = true;
-    public bool allowSwitch = false;
     private Rigidbody bullet;
+
+    /*
     void Update()
     {
         if (Input.GetMouseButton(0))
@@ -25,7 +25,6 @@ public class pnf839_shootingScript : MonoBehaviour
     {
         shootspawning();
         allowShoot = false;
-        allowSwitch = false;
         yield return new WaitForSeconds(bulletDelay);
         allowShoot = true;
     }
@@ -34,10 +33,9 @@ public class pnf839_shootingScript : MonoBehaviour
     {
         bullet = Instantiate(pillbug, transform.position, transform.rotation) as Rigidbody;
         bullet.velocity = transform.TransformDirection(new Vector3(0, 0, bulletSpeed));
-        allowSwitch = true;
     }
 
-
+    */
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Platform")
@@ -45,5 +43,33 @@ public class pnf839_shootingScript : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("Wall hit");
         }
+    }
+
+    private float timeWhenAllowedNextShoot = 0.05f;
+    public float timeBetweenShooting = 0.2f;
+
+    void Update()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("bullet"), 2);
+        checkIfShouldShoot();
+    }
+
+    void checkIfShouldShoot()
+    {
+        if (timeWhenAllowedNextShoot <= Time.time)
+        {
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                shoot();
+                timeWhenAllowedNextShoot = Time.time + timeBetweenShooting;
+                Destroy(bullet.gameObject, 2);
+            }
+        }
+    }
+
+    void shoot()
+    {
+        bullet = Instantiate(pillbug, transform.position, transform.rotation) as Rigidbody;
+        bullet.velocity = transform.TransformDirection(new Vector3(0, 0, bulletSpeed));
     }
 }

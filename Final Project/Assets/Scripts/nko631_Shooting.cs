@@ -4,35 +4,47 @@ using UnityEngine;
 
 public class nko631_Shooting : MonoBehaviour
 {
-    public Rigidbody pillbug;
-    public float bulletSpeed = 100;
-    bool allowShoot = true;
-    public Rigidbody bullet;
-    void Update()
-    {
-        if (allowShoot)
-        {
-            if (Input.GetMouseButton(0))
-            {
-                Debug.Log("MouseDown");
-                StartCoroutine("wait");
+        public GameObject[] weapons; // push your prefabs
+        public int currentWeapon = 0;
+        private int nrWeapons;
 
+        void Start()
+        {
+            nrWeapons = weapons.Length;
+            SwitchWeapon(currentWeapon); // Set default gun
+        }
+
+        void Update()
+        {
+            for (int i = 1; i <= nrWeapons; i++)
+            {
+                if (Input.GetKeyDown("" + i))
+                {
+                    currentWeapon = i - 1;
+
+                    SwitchWeapon(currentWeapon);
+
+                }
             }
-            //idk how to make it delay
-            //Invoke("Delay", 0.05f);
 
         }
-    }
 
-    IEnumerator wait()
-    {
-        allowShoot = false;
-        bullet = Instantiate(pillbug, transform.position, transform.rotation) as Rigidbody;
-        bullet.velocity = transform.TransformDirection(new Vector3(0, 0, bulletSpeed));
-        yield return new WaitForSeconds(1);
-        allowShoot = true;
-        Destroy(bullet.gameObject, 2);
+        void SwitchWeapon(int index)
+        {
 
-    }
+            for (int i = 0; i < nrWeapons; i++)
+            {
+                if (i == index)
+                {
+                    weapons[i].gameObject.SetActive(true);
+                }
+                else
+                {
+                    weapons[i].gameObject.SetActive(false);
+                }
+            }
+        }
+
+    
 
 }
