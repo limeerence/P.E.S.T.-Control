@@ -53,23 +53,6 @@ public class vcd682_GroundMeleeEnemyController : vcd682_EnemyContoller
 
     protected override void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            Debug.Log("Player hit, dealing damage");
-            GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
-
-            if (isAttacking)
-            {
-                gameManager.GetComponent<oos266_GameController>().updateHealth(-attackDamage);
-            }
-            else
-            {
-                gameManager.GetComponent<oos266_GameController>().updateHealth(-contactDamage);
-            }
-        }
-        else if(collision.gameObject.tag == "bullet")
-        {
-            takeDamage(1);
-        }
+        base.OnCollisionEnter(collision);
     }
 }

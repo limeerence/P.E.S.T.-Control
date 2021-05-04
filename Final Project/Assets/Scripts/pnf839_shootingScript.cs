@@ -78,5 +78,6 @@ public class pnf839_shootingScript : MonoBehaviour
     {
         bullet = Instantiate(pillbug, transform.position, transform.rotation) as Rigidbody;
         bullet.velocity = transform.TransformDirection(new Vector3(0, 0, bulletSpeed));
+        bullet.isKinematic = false; //Prevent the physics from knocking back enemies
     }
 }

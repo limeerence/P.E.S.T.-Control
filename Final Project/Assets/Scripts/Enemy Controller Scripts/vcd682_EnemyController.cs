@@ -115,7 +115,6 @@ public class vcd682_EnemyContoller : MonoBehaviour
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
-
         if(collision.gameObject.tag == "Player")
         {
             GameObject gameController = GameObject.FindGameObjectWithTag("GameController");

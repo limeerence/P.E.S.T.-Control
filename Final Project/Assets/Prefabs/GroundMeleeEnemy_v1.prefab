@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 2908477531606052055}
   - component: {fileID: 8870772641645996877}
   - component: {fileID: 5424156793437865670}
-  - component: {fileID: 2211734232240121318}
   m_Layer: 0
   m_Name: GroundMeleeEnemy_v1
   m_TagString: Enemy
@@ -189,21 +188,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.0587711, y: 1.2785504, z: 2.5}
-  m_Center: {x: 0.47061443, y: 0.6392752, z: 0}
---- !u!65 &2211734232240121318
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1667294022689945169}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 3.0360827, y: 1.9547175, z: 2.5}
-  m_Center: {x: -0.018041372, y: 0.97735876, z: 0}
+  m_Size: {x: 3, y: 1.2785504, z: 2.5}
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!1 &7148463042815757072
 GameObject:
   m_ObjectHideFlags: 0
