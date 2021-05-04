@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040718399817098516}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0.5, y: 1.22, z: 0}
+  m_LocalPosition: {x: 0.8, y: 1.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5780739312349136418}
@@ -235,8 +235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pillbug: {fileID: 4925829086822084161, guid: 53c7444cc7360a94392dca68939730f3, type: 3}
   bulletSpeed: 50
-  bulletDelay: 0.5
-  timeBetweenShooting: 1
+  bulletDelay: 1
+  timeBetweenShooting: 5
 --- !u!65 &4004484181988691630
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -372,7 +372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4004484182518962845}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0.5, y: 1.22, z: 0}
+  m_LocalPosition: {x: 1, y: 1.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4004484181932757743}
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431dd15372f887843b8555b39f1303c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pillbug: {fileID: 544358271578710839, guid: e28161a75b59bde45afda34859df7a0b, type: 3}
+  pillbug: {fileID: 3169994860993939304, guid: e28161a75b59bde45afda34859df7a0b, type: 3}
   bulletSpeed: 50
   bulletDelay: 0
   timeBetweenShooting: 0.5
@@ -754,7 +754,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6500533992871307843}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0.5, y: 1.22, z: 0}
+  m_LocalPosition: {x: 0.8, y: 1.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7444999181766236390}

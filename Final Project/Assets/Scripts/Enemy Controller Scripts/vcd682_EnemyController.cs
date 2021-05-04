@@ -128,7 +128,7 @@ public class vcd682_EnemyContoller : MonoBehaviour
         else if (collision.gameObject.tag == "bulletFire") //pnf839 - H E L P: this one and the bulletToxic won't affect the enemy and idk why :/
         {
             Debug.Log("taking fire damage");
-            takeDamage(6);
+            takeDamage(10);
         }
         else if (collision.gameObject.tag == "bulletToxic")
         {
