@@ -11,13 +11,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/oos266-Main Menu.unity
     guid: d63517da6fd9d8a4c8b9bed0c38125ce
-  - enabled: 0
-    path: Assets/Scenes/oos266-Game Test.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/nko631-SewerLev.unity
-    guid: b9ef63a8e6476264eaefb4035f14a627
+  - enabled: 1
+    path: Assets/Scenes/A-First_enemies.unity
+    guid: c17645d8c54ae6e458cb3ae7242a35bf
+  - enabled: 1
+    path: Assets/Scenes/A-First_boss.unity
+    guid: 7388f225ef4bc56489f89598404b9cd1
+  - enabled: 1
+    path: Assets/Scenes/A-Second_enemies.unity
+    guid: e4c5a2877c9766549bcbf2afdb541ff2
   - enabled: 1
     path: Assets/Scenes/A-Second_boss.unity
     guid: 875d0626fab118440a32f6e6d582ae27
+  - enabled: 1
+    path: Assets/Scenes/A_Third_enemies.unity
+    guid: f73209ea6a1aa014390bda6fa3577b3b
+  - enabled: 1
+    path: Assets/Scenes/A-Third_boss.unity
+    guid: 980476e46db66604fa0aac348c0fbfb0
+  - enabled: 0
+    path: Assets/Scenes/oos266-Game Test.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

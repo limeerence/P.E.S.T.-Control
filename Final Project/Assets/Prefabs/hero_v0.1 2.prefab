@@ -94,8 +94,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.7, z: 0}
+  m_Size: {x: 2.118523, y: 1, z: 1}
+  m_Center: {x: 0.5, y: 0.70000005, z: 0}
 --- !u!1 &4004484181932757728
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,8 +239,7 @@ MonoBehaviour:
   pillbug: {fileID: 544358271578710839, guid: e28161a75b59bde45afda34859df7a0b, type: 3}
   bulletSpeed: 100
   bulletDelay: 0
-  allowShoot: 1
-  allowSwitch: 0
+  timeBetweenShooting: 0.2
 --- !u!1 &5525218332501059833
 GameObject:
   m_ObjectHideFlags: 0
