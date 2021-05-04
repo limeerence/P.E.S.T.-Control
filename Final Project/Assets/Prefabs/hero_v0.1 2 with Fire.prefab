@@ -406,7 +406,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4004484183271473044}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 1.22, z: 0}
+  m_LocalPosition: {x: 0.33, y: 1.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4004484182790354918}
@@ -640,7 +640,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3840506883770083736, guid: 624cfa88573098143ab9d46a04ac6b2b, type: 3}
       propertyPath: m_Name
-      value: 'hero_v0.1 2 '
+      value: hero_v0.1 2 with Fire
       objectReference: {fileID: 0}
     - target: {fileID: 4469796264136848162, guid: 624cfa88573098143ab9d46a04ac6b2b, type: 3}
       propertyPath: m_RootOrder
