@@ -302,20 +302,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.collider.GetType() == typeof(BoxCollider))
-            {
-                if (collision.gameObject.tag == "Enemy" && !gameController.shieldPowerUp)
-                {
-                    gameController.updateHealth(-1);
-                }
-                /*if (collision.gameObject.tag == "powerHealth") {
-                    gameController.updateHealth(+1);
-                }*/
-            }
-        }
-
         private void OnCollisionStay(Collision collision)
         {
             if (collision.gameObject.tag == "movingPlatform")
