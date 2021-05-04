@@ -41,7 +41,7 @@ public class vcd682_GroundRangedEnemyController : vcd682_EnemyContoller
         Vector3 projectileSpawnPoint = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
         GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint, Quaternion.identity);
 
-        projectile.GetComponent<EnemyProjectileController>().target = playerLoc;
+        projectile.GetComponent<EnemyProjectileController>().targetPos = playerLoc.position;
         projectile.GetComponent<EnemyProjectileController>().damage = attackDamage;
 
         nextShootTime = Time.time + 1 / fireRate;

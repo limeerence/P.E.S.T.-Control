@@ -6,14 +6,20 @@ public class EnemyProjectileController : MonoBehaviour
 {
     [SerializeField] private float projectileSpeed = 5;
 
-    public Transform target;
+    public Vector3 targetPos;
     public int damage = 1;
 
     private void Update()
     {
-        if(target!= null)
+        if(targetPos!= null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * projectileSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * projectileSpeed);
+
+            float dist = Vector3.Distance(transform.position, targetPos);
+            if(dist <= .1f)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -21,18 +27,15 @@ public class EnemyProjectileController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Damaging player");
+            Debug.Log("Damaging player with bullet");
             GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
             gameManager.GetComponent<oos266_GameController>().updateHealth(-damage);
-            Debug.Log("Destroying projectile");
             Destroy(gameObject);
         }
         else if (collision.gameObject.tag == "Enemy")
         {
             return;
         }
-        else
-            Destroy(gameObject);
-
     }
+    
 }

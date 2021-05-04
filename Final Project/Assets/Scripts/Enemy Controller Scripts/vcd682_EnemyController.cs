@@ -49,22 +49,21 @@ public class vcd682_EnemyContoller : MonoBehaviour
 
         if (isAggroed)
         {
-            agent.SetDestination(playerLoc.position);
-
             //If the enemy is entering it's attack animation, pause the nav
             if (isAttacking)
-                agent.isStopped = true;
+                agent.enabled = false;
             else
             {
                 //Resume the nav if not attacking
-                agent.isStopped = false;
+                agent.enabled = true;
+                agent.SetDestination(playerLoc.position);
 
                 //Face the player
                 transform.LookAt(playerLoc);
-                
+
 
                 //Check if in range to start another attack
-                if(Vector3.Distance(playerLoc.position, transform.position) < startAttackRange)
+                if (Vector3.Distance(playerLoc.position, transform.position) < startAttackRange)
                 {
                     attack();
                 }

@@ -29,15 +29,19 @@ public class vcd682_GroundMeleeEnemyController : vcd682_EnemyContoller
 
     IEnumerator DefaultAttack()
     {
+        Rigidbody body = GetComponent<Rigidbody>();
+        body.freezeRotation = true;
+        body.AddForce(Vector3.up * 5, ForceMode.Impulse);
         transform.LookAt(playerLoc); // Aim at the player
         yield return new WaitForSeconds(1f); // Give them a moment to dodge
 
         //Charge at the player
-        GetComponent<Rigidbody>().AddForce(transform.forward * 15, ForceMode.Impulse);
+        body.AddForce(transform.forward * 15, ForceMode.Impulse);
         yield return new WaitForSeconds(4f);
 
         //Reset vel so the enemy doesn't end up sliding across the whole map
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        body.velocity = Vector3.zero;
+        body.freezeRotation = false;
         isAttacking = false;
     }
 
@@ -51,6 +55,7 @@ public class vcd682_GroundMeleeEnemyController : vcd682_EnemyContoller
     {
         if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("Player hit, dealing damage");
             GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
 
             if (isAttacking)
