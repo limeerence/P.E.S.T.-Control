@@ -13,6 +13,8 @@ TagManager:
   - powerShield
   - powerSnowflake
   - powerStar
+  - bulletFire
+  - bulletToxic
   layers:
   - Default
   - TransparentFX

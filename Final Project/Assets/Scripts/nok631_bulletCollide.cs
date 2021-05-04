@@ -18,5 +18,10 @@ public class nok631_bulletCollide : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("Wall hit");
         }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+            Debug.Log("enemy hit");
+        }
     }
 }

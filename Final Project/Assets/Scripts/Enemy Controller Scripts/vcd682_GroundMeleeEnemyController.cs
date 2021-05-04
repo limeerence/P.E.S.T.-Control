@@ -67,7 +67,7 @@ public class vcd682_GroundMeleeEnemyController : vcd682_EnemyContoller
                 gameManager.GetComponent<oos266_GameController>().updateHealth(-contactDamage);
             }
         }
-        else if(collision.gameObject.tag == "Bullet")
+        else if(collision.gameObject.tag == "bullet")
         {
             takeDamage(1);
         }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 176914799}
   - component: {fileID: 176914797}
   - component: {fileID: 176914798}
+  - component: {fileID: 6475814995412943764}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -83,6 +84,15 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176914796}
   m_Enabled: 1
+--- !u!45 &6475814995412943764
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176914796}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 39288a55da62122488199a2c1087ac96, type: 2}
 --- !u!1 &997137360521998106
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,9 +391,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pillbug: {fileID: 544358271578710839, guid: e28161a75b59bde45afda34859df7a0b, type: 3}
-  bulletSpeed: 100
+  bulletSpeed: 50
   bulletDelay: 0
-  timeBetweenShooting: 0.2
+  timeBetweenShooting: 0.5
 --- !u!1 &5525218332501059833
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +775,7 @@ MonoBehaviour:
   pillbug: {fileID: 3796315213815085451, guid: dd6530f41d7fb624680593af84ea2ea3, type: 3}
   bulletSpeed: 34.26
   bulletDelay: 1.68
-  timeBetweenShooting: 0.5
+  timeBetweenShooting: 0.7
 --- !u!1001 &2544323662364473990
 PrefabInstance:
   m_ObjectHideFlags: 0

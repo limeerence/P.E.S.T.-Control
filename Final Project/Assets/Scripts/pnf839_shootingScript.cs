@@ -43,6 +43,11 @@ public class pnf839_shootingScript : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("Wall hit");
         }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Hit enemy");
+            Destroy(gameObject);
+        }
     }
 
     private float timeWhenAllowedNextShoot = 0.05f;
@@ -51,6 +56,8 @@ public class pnf839_shootingScript : MonoBehaviour
     void Update()
     {
         Destroy(GameObject.FindGameObjectWithTag("bullet"), 2);
+        Destroy(GameObject.FindGameObjectWithTag("bulletFire"), 2);
+        Destroy(GameObject.FindGameObjectWithTag("bulletToxic"), 2);
         checkIfShouldShoot();
     }
 

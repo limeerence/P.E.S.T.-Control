@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class WaveAction
 {
     public string name;
-    public float delay;
+    public float delay = 5f;
     public Transform prefab;
     public int spawnCount;
 }
@@ -41,11 +41,11 @@ public class nko631_enemySpawner : MonoBehaviour
     }
 
     public Wave CurrentWave { get { return m_CurrentWave; } }
-    private float m_DelayFactor = 1.0f;
+    private float m_DelayFactor = 5.0f;
 
     IEnumerator SpawnLoop()
     {
-        m_DelayFactor = 1.0f;
+        m_DelayFactor = 5.0f;
         while (true)
         {
 

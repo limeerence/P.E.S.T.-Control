@@ -7,7 +7,7 @@ public class vcd682_EnemyContoller : MonoBehaviour
 {
     [SerializeField] private int aggroRange = 30; //The range at which the enemy will begin to follow the player
     [SerializeField] private int startAttackRange = 15; //The range at which the enemy will start their attack animation
-    [SerializeField] protected int health = 50;
+    [SerializeField] protected int health = 10;
     [SerializeField] private int aggroSpeed = 2;
     [SerializeField] private int leashRange = 10000; //The max range the enemy can move from its spawnpoint
     private Vector3 spawnpoint;
@@ -40,6 +40,8 @@ public class vcd682_EnemyContoller : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(health); -pnf839 just checking 
+
         //Set aggro if player is within range
         if (!isAggroed && Vector3.Distance(playerLoc.position, transform.position) < aggroRange)
         {
@@ -91,9 +93,10 @@ public class vcd682_EnemyContoller : MonoBehaviour
     public void takeDamage(int damageAmount)
     {
         health -= damageAmount;
-
         if (health <= 0)
-            enterDeathState();
+            Destroy(gameObject); //pnf839- i made it so it would just die because since there is no animator, it just
+                                                //comes back to life and it doesn't die
+        //enterDeathState();
     }
 
     void enterDeathState()
@@ -118,10 +121,20 @@ public class vcd682_EnemyContoller : MonoBehaviour
             GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
             gameController.GetComponent<oos266_GameController>().updateHealth(-contactDamage);
         }
-        else if(collision.gameObject.tag == "Bullet")
+        else if(collision.gameObject.tag == "bullet") //pnf839- i changed the bullet to lowercase because that's what the tag was, sorry for the confusion.
         {
             Debug.Log("enemy taking damage");
-            takeDamage(5);
+            takeDamage(1);
+        }
+        else if (collision.gameObject.tag == "bulletFire") //pnf839 - H E L P: this one and the bulletToxic won't affect the enemy and idk why :/
+        {
+            Debug.Log("taking fire damage");
+            takeDamage(6);
+        }
+        else if (collision.gameObject.tag == "bulletToxic")
+        {
+            Debug.Log("toxic damage");
+            takeDamage(4);
         }
     }
 }

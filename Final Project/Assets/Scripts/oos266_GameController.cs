@@ -15,6 +15,9 @@ public class oos266_GameController : MonoBehaviour
     [SerializeField] private Image healthImage;
     [SerializeField] private Image shieldedImage;
     [SerializeField] private Image slowedImage;
+    private GameObject[] allEnemies; //pnf839 - added this for checking if enemies are still around
+    private GameObject boss; //pnf839 - added this for the boss
+
 
     public bool shieldPowerUp = false;
     public bool snowflakePowerUp = false;
@@ -23,15 +26,27 @@ public class oos266_GameController : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     private void Update()
     {
-       /* if (health <= 0) {
-            //GameOver();
-            Debug.Log("Taking damage");
+        allEnemies = GameObject.FindGameObjectsWithTag("Enemy"); //pnf839- added this so that you could move on to the next level.
+        //boss = GameObject.FindGameObjectsWithTag("boss"); //pnf839- added this so that you could move on to the next level.
+        if (allEnemies.Length == 0)
+        {
+            SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1));            
+        }
+        /*if (boss. == 0)
+        {
+            SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1)); //added this for when you reach the boss levels. 
         }*/
+
+
+        /* if (health <= 0) {
+             //GameOver();
+             Debug.Log("Taking damage");
+         }*/
     }
 
     public void updateHealth(int addHealth)
@@ -101,9 +116,7 @@ public class oos266_GameController : MonoBehaviour
                 pestMachine.gameObject.active = false;
                 ss.bulletDelay = 0.2f;
                 break;
-
         }
-    
     }
     */
 }
