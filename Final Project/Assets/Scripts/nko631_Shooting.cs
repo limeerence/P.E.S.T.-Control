@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class nko631_Shooting : MonoBehaviour
 {
-        public GameObject[] weapons; // push your prefabs
+        public GameObject[] weapons;
         public int currentWeapon = 0;
         private int nrWeapons;
 

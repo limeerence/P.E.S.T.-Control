@@ -81,7 +81,7 @@ public class oos266_GameController : MonoBehaviour
         snowflakePowerUp = false;
         slowedImage.gameObject.SetActive(false);
     }
-
+    /*
     public void updateWeapon(int keypressed)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -103,6 +103,7 @@ public class oos266_GameController : MonoBehaviour
                 break;
 
         }
-
+    
     }
+    */
 }
