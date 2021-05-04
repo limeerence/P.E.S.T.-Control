@@ -311,7 +311,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (collision.collider.GetType() == typeof(BoxCollider))
             {
-                if (collision.gameObject.tag == "hazard" && isInvulnerable == false && !gameController.shieldPowerUp)
+                if (collision.gameObject.tag == "hazard" && !isInvulnerable && !gameController.shieldPowerUp)
                 {
                     StartCoroutine("InvulnerableTime");
                     gameController.updateHealth(-1);

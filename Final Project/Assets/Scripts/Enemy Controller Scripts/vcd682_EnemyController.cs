@@ -118,7 +118,11 @@ public class vcd682_EnemyContoller : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
-            gameController.GetComponent<oos266_GameController>().updateHealth(-contactDamage);
+            //lps765 - if statement to get shield power up to work
+            if (!gameController.GetComponent<oos266_GameController>().shieldPowerUp)
+            {
+                gameController.GetComponent<oos266_GameController>().updateHealth(-contactDamage);
+            }
         }
         else if(collision.gameObject.tag == "bullet") //pnf839- i changed the bullet to lowercase because that's what the tag was, sorry for the confusion.
         {

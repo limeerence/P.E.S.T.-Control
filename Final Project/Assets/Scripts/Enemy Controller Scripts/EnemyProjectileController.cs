@@ -29,7 +29,11 @@ public class EnemyProjectileController : MonoBehaviour
         {
             Debug.Log("Damaging player with bullet");
             GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
-            gameManager.GetComponent<oos266_GameController>().updateHealth(-damage);
+            //lps765 - if statement to get shield power up to work
+            if (!gameManager.GetComponent<oos266_GameController>().shieldPowerUp)
+            {
+                gameManager.GetComponent<oos266_GameController>().updateHealth(-damage);
+            }
             Destroy(gameObject);
         }
         else if (collision.gameObject.tag == "Enemy")
