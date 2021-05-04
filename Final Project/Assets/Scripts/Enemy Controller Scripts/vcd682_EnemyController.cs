@@ -6,19 +6,19 @@ using UnityEngine.AI;
 public class vcd682_EnemyContoller : MonoBehaviour
 {
     [SerializeField] private int aggroRange = 30; //The range at which the enemy will begin to follow the player
-    [SerializeField] private int startAttackRange = 7; //The range at which the enemy will start their attack animation
+    [SerializeField] private int startAttackRange = 15; //The range at which the enemy will start their attack animation
     [SerializeField] protected int health = 50;
     [SerializeField] private int aggroSpeed = 2;
     [SerializeField] private int leashRange = 10000; //The max range the enemy can move from its spawnpoint
     private Vector3 spawnpoint;
     [SerializeField] protected bool isAggroed = false;
 
-    [SerializeField] private int contactDamage = 10; //The amount of damage the player will take by touching this enemy
-    [SerializeField] private int attackDamage = 20; //The amount of damage the player will take from the attack animation of this enemy
+    [SerializeField] protected int contactDamage = 1; //The amount of damage the player will take by touching this enemy
+    [SerializeField] protected int attackDamage = 2; //The amount of damage the player will take from the attack animation of this enemy
 
     protected Animator anim;
     protected NavMeshAgent agent;
-    private Transform playerLoc;
+    protected Transform playerLoc;
 
     protected bool isAttacking = false;
     private float wanderRange = 2.5f;
@@ -26,10 +26,10 @@ public class vcd682_EnemyContoller : MonoBehaviour
     protected bool isDead = false;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         spawnpoint = transform.position; //Record the spawnpoint for leashing
+        anim = GetComponent<Animator>();
 
         //Grab the Mesh agent and locate the player
         agent = GetComponent<NavMeshAgent>();
@@ -38,7 +38,6 @@ public class vcd682_EnemyContoller : MonoBehaviour
         agent.speed = passiveSpeed; //Set the speed of the enemy to it's passive wander speed
     }
 
-    // Update is called once per frame
     void Update()
     {
         //Set aggro if player is within range
@@ -59,6 +58,10 @@ public class vcd682_EnemyContoller : MonoBehaviour
             {
                 //Resume the nav if not attacking
                 agent.isStopped = false;
+
+                //Face the player
+                transform.LookAt(playerLoc);
+                
 
                 //Check if in range to start another attack
                 if(Vector3.Distance(playerLoc.position, transform.position) < startAttackRange)
@@ -103,8 +106,23 @@ public class vcd682_EnemyContoller : MonoBehaviour
         Destroy(gameObject, 5f);
     }
 
-    void attack()
+    protected virtual void attack()
     {
-        
+        Debug.Log("Whoops, entered the wrong method");
+    }
+
+    protected virtual void OnCollisionEnter(Collision collision)
+    {
+
+        if(collision.gameObject.tag == "Player")
+        {
+            GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+            gameController.GetComponent<oos266_GameController>().updateHealth(-contactDamage);
+        }
+        else if(collision.gameObject.tag == "Bullet")
+        {
+            Debug.Log("enemy taking damage");
+            takeDamage(5);
+        }
     }
 }

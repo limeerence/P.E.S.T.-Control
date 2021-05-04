@@ -141,7 +141,7 @@ Rigidbody:
   m_GameObject: {fileID: 1667294022689945169}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.2
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -175,14 +175,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aggroRange: 30
-  startAttackRange: 7
-  health: 50
+  startAttackRange: 15
+  health: 5
   aggroSpeed: 2
   leashRange: 10000
   isAggroed: 0
-  contactDamage: 10
-  attackDamage: 20
-  playerLoc: {fileID: 0}
+  contactDamage: 1
+  attackDamage: 2
+  hasAttackAnimation: 0
+  attackAnimDuration: 5
 --- !u!195 &8870772641645996877
 NavMeshAgent:
   m_ObjectHideFlags: 0
