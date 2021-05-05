@@ -333,7 +333,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //gives player an extra life
             if (other.gameObject.tag == "powerHealth")
             {
-                Debug.Log("Full Health");
+                Debug.Log("Health");
                 Destroy(other.gameObject);
 
                 if (gameController.health < 5)
@@ -342,7 +342,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     gameController.updateHealth(1);
                     StartCoroutine(gameController.healthPopup());
                 }
-                else { }
+                else 
+                {
+                    Debug.Log("Full Health");
+                }
 
             }
 
