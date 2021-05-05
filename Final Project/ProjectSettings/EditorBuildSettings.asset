@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/A-Third_boss.unity
     guid: 980476e46db66604fa0aac348c0fbfb0
-  - enabled: 0
-    path: Assets/Scenes/oos266-Game Test.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/oos266-End Scene.unity
+    guid: 20c76494eb031ab45b5d5318d1ffe6a9
   m_configObjects: {}

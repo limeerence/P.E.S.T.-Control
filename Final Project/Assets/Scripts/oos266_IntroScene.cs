@@ -11,17 +11,20 @@ public class oos266_IntroScene : MonoBehaviour
     private int waitForSkip = 5;
 
     [SerializeField] private Image sceneImage;
-    [SerializeField] private Sprite scene1;
-    [SerializeField] private Sprite scene2;
-    [SerializeField] private Sprite scene3;
-    [SerializeField] private Sprite scene4;
-    [SerializeField] private Sprite scene5;
+    [SerializeField] private Sprite[] scenes;
 
     [SerializeField] private Button skip;
 
     void Start()
     {
-        StartCoroutine("IntroScene");
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            StartCoroutine("IntroScene");
+        } else
+        {
+            StartCoroutine("EndScene");
+        }
+            
     }
 
     private void Update()
@@ -35,22 +38,44 @@ public class oos266_IntroScene : MonoBehaviour
 
     IEnumerator IntroScene()
     {
-        sceneImage.sprite = scene1;
+        sceneImage.sprite = scenes[0];
         yield return new WaitForSeconds(waitForSkip);
         skip.gameObject.SetActive(true);
         yield return new WaitForSeconds(waitForSkip);
 
-        sceneImage.sprite = scene2;
+        sceneImage.sprite = scenes[1];
         yield return new WaitForSeconds(waitForImage);
 
-        sceneImage.sprite = scene3;
+        sceneImage.sprite = scenes[2];
         yield return new WaitForSeconds(waitForImage);
 
-        sceneImage.sprite = scene4;
+        sceneImage.sprite = scenes[3];
         yield return new WaitForSeconds(waitForImage);
 
-        sceneImage.sprite = scene5;
+        sceneImage.sprite = scenes[4];
         yield return new WaitForSeconds(waitForImage);
+
+        SceneManager.LoadScene(mainmenuIndex);
+    }
+
+    IEnumerator EndScene()
+    {
+        sceneImage.sprite = scenes[0];
+        yield return new WaitForSeconds(4);
+        skip.gameObject.SetActive(true);
+        yield return new WaitForSeconds(4);
+
+        sceneImage.sprite = scenes[1];
+        yield return new WaitForSeconds(6);
+
+        sceneImage.sprite = scenes[2];
+        yield return new WaitForSeconds(7);
+
+        sceneImage.sprite = scenes[3];
+        yield return new WaitForSeconds(3);
+
+        sceneImage.sprite = scenes[4];
+        yield return new WaitForSeconds(5);
 
         SceneManager.LoadScene(mainmenuIndex);
     }

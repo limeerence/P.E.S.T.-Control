@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 502767622}
   - component: {fileID: 502767621}
   m_Layer: 5
-  m_Name: Intro Scene
+  m_Name: End Scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6359f18b23823fd45bd5fa8518b32762, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dcb5877cc0b5d204a8c67e5264805d32, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 585137207}
   - component: {fileID: 585137206}
   m_Layer: 5
-  m_Name: Skip Intro
+  m_Name: Skip End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -361,11 +361,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneImage: {fileID: 502767621}
   scenes:
-  - {fileID: 21300000, guid: 6359f18b23823fd45bd5fa8518b32762, type: 3}
-  - {fileID: 21300000, guid: ab8d2989625b2c245ae0fec8f7f01d36, type: 3}
-  - {fileID: 21300000, guid: 4e96626dc56334844ade91838968506a, type: 3}
-  - {fileID: 21300000, guid: 1cecfe66a71eb2d4bb44393804c201fa, type: 3}
-  - {fileID: 21300000, guid: 1c68fa7a66910d64c95c83b3715be77f, type: 3}
+  - {fileID: 21300000, guid: dcb5877cc0b5d204a8c67e5264805d32, type: 3}
+  - {fileID: 21300000, guid: 04c79c7bacc393545b9ed4d0b318d3f8, type: 3}
+  - {fileID: 21300000, guid: 4306e029ef9d1564b97ca9dc406aee6c, type: 3}
+  - {fileID: 21300000, guid: a5c32a7108aabe143a4b971bca61d4bf, type: 3}
+  - {fileID: 21300000, guid: 7af3f6f966c5a7f458e8ae51807db896, type: 3}
   skip: {fileID: 585137206}
 --- !u!4 &800920222
 Transform:
