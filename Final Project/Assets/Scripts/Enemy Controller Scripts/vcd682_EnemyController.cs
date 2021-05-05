@@ -24,6 +24,7 @@ public class vcd682_EnemyContoller : MonoBehaviour
     private float wanderRange = 2.5f;
     private int passiveSpeed = 1;
     protected bool isDead = false;
+    public AudioSource deathSound;
 
 
     void Start()
@@ -100,9 +101,11 @@ public class vcd682_EnemyContoller : MonoBehaviour
     public void takeDamage(int damageAmount)
     {
         health -= damageAmount;
-        if (health <= 0)
-            Destroy(gameObject); //pnf839- i made it so it would just die because since there is no animator, it just
-                                                //comes back to life and it doesn't die
+        if (health <= 0) {
+            agent.isStopped = true;
+            deathSound.Play();
+            Destroy(gameObject, 1f); //pnf839- i made it so it would just die because since there is no animator, it just
+        }                     //comes back to life and it doesn't die
         //enterDeathState();
     }
 
