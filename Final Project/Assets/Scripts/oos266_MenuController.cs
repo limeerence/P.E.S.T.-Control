@@ -69,6 +69,11 @@ public class oos266_MenuController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void introScene()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void level1Enemies()
     {
         SceneManager.LoadScene(2);
@@ -97,5 +102,10 @@ public class oos266_MenuController : MonoBehaviour
     public void level3Boss()
     {
         SceneManager.LoadScene(7);
+    }
+
+    public void endScene()
+    {
+        SceneManager.LoadScene(8);
     }
 }
