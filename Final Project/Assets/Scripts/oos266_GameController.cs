@@ -15,31 +15,36 @@ public class oos266_GameController : MonoBehaviour
     [SerializeField] private Image healthImage;
     [SerializeField] private Image shieldedImage;
     [SerializeField] private Image slowedImage;
+    [SerializeField] private Text enemiesRemainingText; //pnf839- adding this so the player could see how many enemies would be remaining
     private GameObject[] allEnemies; //pnf839 - added this for checking if enemies are still around
-    private GameObject boss; //pnf839 - added this for the boss
+   // private GameObject boss; //pnf839 - added this for the boss// there was no boss 
 
 
     public bool shieldPowerUp = false;
     public bool snowflakePowerUp = false;
+    public int enemiesRemaining;
 
     [SerializeField] public GameObject gameOverPanel;
 
     private void Start()
     {
-
+        enemiesRemaining = PlayerPrefs.GetInt("Enemies Remaining: ", 2);
     }
 
     private void Update()
     {
         allEnemies = GameObject.FindGameObjectsWithTag("Enemy"); //pnf839- added this so that you could move on to the next level.
+        enemiesRemainingText.text = "Enemies Remaining: " + allEnemies.Length;
         //boss = GameObject.FindGameObjectsWithTag("boss"); //pnf839- added this so that you could move on to the next level.
         if (allEnemies.Length == 0)
         {
+            PlayerPrefs.GetInt("Enemies Remaining: ", 2);
             SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1));            
         }
+        
         /*if (boss. == 0)
         {
-            SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1)); //added this for when you reach the boss levels. 
+            SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1)); //added this for when you reach the boss levels. //no need
         }*/
 
 

@@ -1913,7 +1913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aggroRange: 200
-  startAttackRange: 3
+  startAttackRange: 1
   health: 15
   aggroSpeed: 5
   leashRange: 10000

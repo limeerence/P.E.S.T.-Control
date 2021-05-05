@@ -13,7 +13,7 @@ public class oos266_PowerupController : MonoBehaviour
             controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<oos266_GameController>();
         }
         //destroy timer
-        StartCoroutine("CountDown");
+      //  StartCoroutine("CountDown"); - Pnf839 - sorry, but didn't want them to be like destroyed after a certain amount of time. 
     }
 
     private void Update()

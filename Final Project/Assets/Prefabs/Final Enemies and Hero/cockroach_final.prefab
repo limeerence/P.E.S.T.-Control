@@ -664,7 +664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aggroRange: 200
-  startAttackRange: 1
+  startAttackRange: 2
   health: 15
   aggroSpeed: 6
   leashRange: 10000

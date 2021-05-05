@@ -66,16 +66,16 @@ public class oos266_IntroScene : MonoBehaviour
         yield return new WaitForSeconds(4);
 
         sceneImage.sprite = scenes[1];
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(4);
 
         sceneImage.sprite = scenes[2];
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(4);
 
         sceneImage.sprite = scenes[3];
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
 
         sceneImage.sprite = scenes[4];
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
 
         SceneManager.LoadScene(mainmenuIndex);
     }

@@ -1283,6 +1283,7 @@ RectTransform:
   - {fileID: 215508049}
   - {fileID: 488114792}
   - {fileID: 1259356201}
+  - {fileID: 1008355058}
   m_Father: {fileID: 1594567838}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2640,6 +2641,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 1bf04411ea1641842ab47d2f57baabf5, type: 3}
   m_PrefabInstance: {fileID: 1005342193}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1008355057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1008355058}
+  - component: {fileID: 1008355059}
+  - component: {fileID: 1008355060}
+  m_Layer: 5
+  m_Name: EnemiesRemain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1008355058
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008355057}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.3353, y: 1.3353, z: 1.3353}
+  m_Children: []
+  m_Father: {fileID: 261714846}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -10, y: -5}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 1, y: 1}
+--- !u!222 &1008355059
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008355057}
+  m_CullTransparentMesh: 1
+--- !u!114 &1008355060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008355057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 1, b: 0.085513115, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
 --- !u!1 &1016369067
 GameObject:
   m_ObjectHideFlags: 0
@@ -4194,6 +4274,10 @@ PrefabInstance:
       propertyPath: aggroSpeed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6424333569200785026, guid: aa30a351dde4d074a9d721243a56b084, type: 3}
+      propertyPath: startAttackRange
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7000064694931445904, guid: aa30a351dde4d074a9d721243a56b084, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4512,8 +4596,10 @@ MonoBehaviour:
   healthImage: {fileID: 721825777}
   shieldedImage: {fileID: 1016369070}
   slowedImage: {fileID: 704580557}
+  enemiesRemainingText: {fileID: 1008355060}
   shieldPowerUp: 0
   snowflakePowerUp: 0
+  enemiesRemaining: 0
   gameOverPanel: {fileID: 1205112552}
 --- !u!114 &1379845277
 MonoBehaviour:
