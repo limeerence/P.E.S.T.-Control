@@ -9486,6 +9486,10 @@ PrefabInstance:
       propertyPath: sound
       value: 
       objectReference: {fileID: 1187547621}
+    - target: {fileID: 2619201618118451932, guid: aa6c9cc565e57a34fb2a6bc8e3485386, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 1044905065}
     - target: {fileID: 2619201618118451933, guid: aa6c9cc565e57a34fb2a6bc8e3485386, type: 3}
       propertyPath: m_Name
       value: oos266_hero_test
