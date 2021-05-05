@@ -556,9 +556,12 @@ GameObject:
   - component: {fileID: 2727813141421338207}
   - component: {fileID: 2727813141421338200}
   - component: {fileID: -4801820916714622222}
+  - component: {fileID: 2997647370754611878}
+  - component: {fileID: 937787126713515470}
+  - component: {fileID: 820453609559918194}
   m_Layer: 0
   m_Name: cockroach_final
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -572,7 +575,7 @@ Transform:
   m_GameObject: {fileID: 2961761381809314760}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 1457353053424489718}
   - {fileID: 4117341059393821722}
@@ -626,6 +629,63 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!195 &2997647370754611878
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961761381809314760}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 6.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &937787126713515470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961761381809314760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd7f01fb05e4e540aae1ac023a96f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aggroRange: 200
+  startAttackRange: 3
+  health: 15
+  aggroSpeed: 5
+  leashRange: 10000
+  isAggroed: 0
+  contactDamage: 1
+  attackDamage: 1
+  hasAttackAnimation: 0
+  attackAnimDuration: 5
+--- !u!65 &820453609559918194
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961761381809314760}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1.2785504, z: 2.5}
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!1 &3045594202687328466
 GameObject:
   m_ObjectHideFlags: 0
