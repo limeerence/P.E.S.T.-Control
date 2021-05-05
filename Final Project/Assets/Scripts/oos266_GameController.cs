@@ -15,6 +15,7 @@ public class oos266_GameController : MonoBehaviour
     [SerializeField] private Image healthImage;
     [SerializeField] private Image shieldedImage;
     [SerializeField] private Image slowedImage;
+    [SerializeField] private Image areaNameImage;
     [SerializeField] private Text enemiesRemainingText; //pnf839- adding this so the player could see how many enemies would be remaining
     private GameObject[] allEnemies; //pnf839 - added this for checking if enemies are still around
    // private GameObject boss; //pnf839 - added this for the boss// there was no boss 
@@ -29,6 +30,7 @@ public class oos266_GameController : MonoBehaviour
     private void Start()
     {
         enemiesRemaining = PlayerPrefs.GetInt("Enemies Remaining: ", 2);
+        StartCoroutine("AreaNamePopup");
     }
 
     private void Update()
@@ -101,6 +103,14 @@ public class oos266_GameController : MonoBehaviour
         snowflakePowerUp = false;
         slowedImage.gameObject.SetActive(false);
     }
+
+    IEnumerator AreaNamePopup()
+    {
+        areaNameImage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2);
+        areaNameImage.gameObject.SetActive(false);
+    }
+
     /*
     public void updateWeapon(int keypressed)
     {

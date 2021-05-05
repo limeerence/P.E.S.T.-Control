@@ -3958,8 +3958,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1280, y: 320}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 1280, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &748588880
 MonoBehaviour:
@@ -5428,6 +5428,7 @@ MonoBehaviour:
   healthImage: {fileID: 206322590}
   shieldedImage: {fileID: 1361916528}
   slowedImage: {fileID: 1372811061}
+  areaNameImage: {fileID: 748588880}
   enemiesRemainingText: {fileID: 2145012000}
   shieldPowerUp: 0
   snowflakePowerUp: 0

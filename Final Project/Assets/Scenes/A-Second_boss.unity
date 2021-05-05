@@ -2627,8 +2627,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1280, y: 320}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 1280, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &788922754
 MonoBehaviour:
@@ -2650,7 +2650,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 91b2e664454b2f04bb6643ec543b8926, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f9e5bd5a24b4f4444a901bbc6eef4648, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3127,6 +3127,7 @@ MonoBehaviour:
   healthImage: {fileID: 500614919}
   shieldedImage: {fileID: 567312887}
   slowedImage: {fileID: 840034514}
+  areaNameImage: {fileID: 788922754}
   enemiesRemainingText: {fileID: 635156999}
   shieldPowerUp: 0
   snowflakePowerUp: 0
