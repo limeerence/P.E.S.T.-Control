@@ -8,6 +8,7 @@ public class pnf839_shootingScript : MonoBehaviour
     public float bulletSpeed = 100;
     public float bulletDelay;
     private Rigidbody bullet;
+    public AudioSource sound;
 
     /*
     void Update()
@@ -68,6 +69,7 @@ public class pnf839_shootingScript : MonoBehaviour
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 shoot();
+                sound.Play();
                 timeWhenAllowedNextShoot = Time.time + timeBetweenShooting;
                 Destroy(bullet.gameObject, 2);
             }
