@@ -13,7 +13,7 @@ public class oos266_PowerupController : MonoBehaviour
             controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<oos266_GameController>();
         }
         //destroy timer
-        //StartCoroutine("CountDown");
+        StartCoroutine("CountDown");
     }
 
     private void Update()
