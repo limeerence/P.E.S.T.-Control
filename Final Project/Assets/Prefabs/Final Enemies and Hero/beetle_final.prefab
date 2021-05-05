@@ -1268,9 +1268,13 @@ GameObject:
   - component: {fileID: 6547632084653719904}
   - component: {fileID: 928494715314388263}
   - component: {fileID: 6892450292253262675}
+  - component: {fileID: 7028489946816639920}
+  - component: {fileID: 7638788178929075331}
+  - component: {fileID: 1009843717658254971}
+  - component: {fileID: 2581774075632064543}
   m_Layer: 0
   m_Name: beetle_final
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1282,7 +1286,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5878899678900919258}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1290,7 +1294,7 @@ Transform:
   - {fileID: 4987237433546410861}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &928494715314388263
 Animator:
   serializedVersion: 3
@@ -1322,6 +1326,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa5e75e40f5ebb43a8420eb62997408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &7028489946816639920
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5878899678900919258}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 6.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!54 &7638788178929075331
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5878899678900919258}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0.2
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1009843717658254971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5878899678900919258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd7f01fb05e4e540aae1ac023a96f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aggroRange: 200
+  startAttackRange: 3
+  health: 15
+  aggroSpeed: 5
+  leashRange: 10000
+  isAggroed: 0
+  contactDamage: 1
+  attackDamage: 1
+  hasAttackAnimation: 0
+  attackAnimDuration: 5
+--- !u!65 &2581774075632064543
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5878899678900919258}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1.2785504, z: 2.5}
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!1 &5934031223864587382
 GameObject:
   m_ObjectHideFlags: 0
