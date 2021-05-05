@@ -154,7 +154,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             pnf839_shootingScript ss;
-            ss = player.transform.Find("pest_machine").transform.Find("spawnpoint").GetComponent<pnf839_shootingScript>();
+            //ss = player.transform.Find("pest_machine").transform.Find("spawnpoint").GetComponent<pnf839_shootingScript>();
 
             /*
             if (Input.GetKeyDown("1"))
@@ -228,8 +228,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void StickToGroundHelper()
         {
             RaycastHit hitInfo;
-            if (Physics.SphereCast(transform.position, m_Capsule.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo,
-                                   ((m_Capsule.height / 2f) - m_Capsule.radius) +
+            if (Physics.SphereCast(transform.position, m_Capsule.radius * (1.0f - advancedSettings.shellOffset), Vector3.up, out hitInfo,
+                                   ((m_Capsule.height / 4f) - m_Capsule.radius) +
                                    advancedSettings.stickToGroundHelperDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
             {
                 if (Mathf.Abs(Vector3.Angle(hitInfo.normal, Vector3.up)) < 85f)

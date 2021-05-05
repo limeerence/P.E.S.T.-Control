@@ -1807,7 +1807,7 @@ GameObject:
   - component: {fileID: -4249917260951100278}
   - component: {fileID: 2635390072949174339}
   - component: {fileID: 5318192171783787703}
-  - component: {fileID: 1676300314806679723}
+  - component: {fileID: 6110721912250172807}
   m_Layer: 0
   m_Name: zombie ant_final
   m_TagString: Enemy
@@ -1922,7 +1922,7 @@ MonoBehaviour:
   attackDamage: 1
   hasAttackAnimation: 0
   attackAnimDuration: 5
---- !u!65 &1676300314806679723
+--- !u!65 &6110721912250172807
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1933,8 +1933,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 1.2785504, z: 2.5}
-  m_Center: {x: 0, y: 0.6, z: 0}
+  m_Size: {x: 3, y: 1.2785504, z: 1.5071923}
+  m_Center: {x: 0, y: 0.6, z: -0.49640337}
 --- !u!1 &9086180589050869119
 GameObject:
   m_ObjectHideFlags: 0
