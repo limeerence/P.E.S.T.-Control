@@ -1535,6 +1535,7 @@ MonoBehaviour:
   isAggroed: 0
   contactDamage: 1
   attackDamage: 1
+  bone: {fileID: 5278186872427524061, guid: a64d33d9cecb9ff4a8b4af2492812eb6, type: 3}
   deathSound: {fileID: 7497409889823668665}
   hasAttackAnimation: 0
   attackAnimDuration: 5

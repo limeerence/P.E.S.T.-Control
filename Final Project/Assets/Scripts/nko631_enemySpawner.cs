@@ -97,11 +97,14 @@ public class nko631_enemySpawner : MonoBehaviour
     }
     public void SpawnEnemy()
     {
-        //Instantiate(enemyPrefab, transform); //- edit out for a little bit
-        num = Random.Range(0, 5);
+        //Instantiate(enemyPrefab, transform); //pnf839 - edited out 
+        num = Random.Range(0, 5); //pnf839 - range from 0 to 5 
         // spawns a clone of a given prefab, in order to create multiple instances that can be spawned and deleted 
-         spawnClones[0] = Instantiate(enemyPrefab, enemySpawnPoints[num].transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+         spawnClones[0] = Instantiate(enemyPrefab, enemySpawnPoints[num].transform.position, Quaternion.Euler(0, 0, 0)) as GameObject; //pnf839 - random position
     }
+
+    //pnf839 i removed everything below because the one above spawns them randomly
+
 
   //  public Wave CurrentWave { get { return m_CurrentWave; } }
    // private float m_DelayFactor = 5.0f;

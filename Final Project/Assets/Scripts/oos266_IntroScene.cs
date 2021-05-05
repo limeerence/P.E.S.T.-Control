@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class oos266_IntroScene : MonoBehaviour
 {
     private int mainmenuIndex = 1;
-    private int waitForImage = 10;
+    private int waitForImage = 7;
     private int waitForSkip = 5;
 
     [SerializeField] private Image sceneImage;

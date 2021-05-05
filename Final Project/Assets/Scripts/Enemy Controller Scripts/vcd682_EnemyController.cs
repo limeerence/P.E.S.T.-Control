@@ -19,12 +19,15 @@ public class vcd682_EnemyContoller : MonoBehaviour
     protected Animator anim;
     protected NavMeshAgent agent;
     protected Transform playerLoc;
+    public GameObject bone;
 
     protected bool isAttacking = false;
     private float wanderRange = 2.5f;
     private int passiveSpeed = 1;
     protected bool isDead = false;
-    public AudioSource deathSound;
+    //[SerializeField] private GameObject deathParticles;
+    private ParticleSystem deathParticle; //pnf839 - needed for the particle
+    public AudioSource deathSound; //pnf839 - needed for the sound
 
 
     void Start()
@@ -35,7 +38,7 @@ public class vcd682_EnemyContoller : MonoBehaviour
         //Grab the Mesh agent and locate the player
         agent = GetComponent<NavMeshAgent>();
         playerLoc = GameObject.FindGameObjectWithTag("Player").transform;
-
+        
         agent.speed = passiveSpeed; //Set the speed of the enemy to it's passive wander speed
     }
 
@@ -98,12 +101,16 @@ public class vcd682_EnemyContoller : MonoBehaviour
         }
     }
 
+ 
     public void takeDamage(int damageAmount)
     {
         health -= damageAmount;
         if (health <= 0) {
-            agent.isStopped = true;
-            deathSound.Play();
+            agent.isStopped = true; //make the enemy stop moving
+        //deathParticle.Play();
+        GameObject deathObject = Instantiate(bone, this.transform.position, this.transform.rotation) as GameObject; //-pnf839, turning on particle system
+        deathParticle = deathObject.GetComponent<ParticleSystem>(); //-pnf839, turning on particle system
+            deathSound.Play(); //make the sound for the enemy before they die
             Destroy(gameObject, 1f); //pnf839- i made it so it would just die because since there is no animator, it just
         }                     //comes back to life and it doesn't die
         //enterDeathState();

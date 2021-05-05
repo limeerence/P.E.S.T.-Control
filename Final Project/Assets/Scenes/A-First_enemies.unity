@@ -22866,6 +22866,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3192056749974884445, guid: aa30a351dde4d074a9d721243a56b084, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6424333569200785026, guid: aa30a351dde4d074a9d721243a56b084, type: 3}
+      propertyPath: deathParticle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6424333569200785026, guid: aa30a351dde4d074a9d721243a56b084, type: 3}
+      propertyPath: deathParticles
+      value: 
+      objectReference: {fileID: 5278186872427524061, guid: a64d33d9cecb9ff4a8b4af2492812eb6, type: 3}
     - target: {fileID: 7000064694931445904, guid: aa30a351dde4d074a9d721243a56b084, type: 3}
       propertyPath: m_RootOrder
       value: 7
