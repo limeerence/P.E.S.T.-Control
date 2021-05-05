@@ -68,4 +68,34 @@ public class oos266_MenuController : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void level1Enemies()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void level1Boss()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void level2Enemies()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+    public void level2Boss()
+    {
+        SceneManager.LoadScene(5);
+    }
+
+    public void level3Enemies()
+    {
+        SceneManager.LoadScene(6);
+    }
+
+    public void level3Boss()
+    {
+        SceneManager.LoadScene(7);
+    }
 }
